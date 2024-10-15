@@ -1,6 +1,0 @@
-*
-!src/*.c
-!headers/*.h
-!libft/*.c
-!libft/*.h
-Makefile
