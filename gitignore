@@ -1,0 +1,5 @@
+*
+!src/*
+!headers/*
+Makefile
+gitignore
