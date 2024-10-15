@@ -38,4 +38,3 @@
 [ ] adicionar funcionalidade de `%X`
     [ ] `procedimentos base`
 [ ] pesquisar por testers online.
- 
