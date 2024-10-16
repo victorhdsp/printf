@@ -1,16 +1,33 @@
 #include "printf.h"
+#include <stdio.h>
+
+int ft_interpreter(char c, int fd)
+{
+    //printf("%c", c);
+    if (c == '%')
+        ft_putchar_fd('%', fd);
+    else
+        return (0);
+    return (2);
+}
 
 int ft_reader(const char *str, int fd, ...)
 {
     size_t  index;
-    size_t  len;
 
-    index = 0;
-    len = ft_strlen(str);
-    while (index < len)
+    index = 1;
+    while (str && *str)
     {
-        write (fd, &str[index], 1);
-        index++;
+        if (*str != '%')
+        {
+            ft_putchar_fd(*str, fd);
+            index = 1;
+        }
+        else
+            index = ft_interpreter(*(str + 1), fd);
+        if (!index)
+            return (0);
+        str += index;
     }
     return (1);
 }

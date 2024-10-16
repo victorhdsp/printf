@@ -1,6 +1,7 @@
 __test__/*
 TODO.md
 tests.sh
+commit.sh
 libft/.*
 *.a
 *.o
