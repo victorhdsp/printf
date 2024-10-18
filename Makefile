@@ -1,9 +1,7 @@
-HEADER=./headers/
-FILES=./src/ft_printf.o ./src/ft_reader.o
+FILES=./src/ft_printf.o ./src/ft_printf_utils.o ./src/ft_commands.o
 BONUS=
-LIBFT=libft.a
 NAME=libftprintf.a
-CC=cc -Wall -Wextra -Werror -g -I ./headers/ -I ./libft/
+CC=cc -Wall -Wextra -Werror -g -I .
 AR=ar -rca
 
 all: $(NAME)
@@ -12,15 +10,12 @@ $(NAME): $(FILES) $(LIBFT)
 	$(AR) $(NAME) $@ $^
 
 .o: .c
-	$(CC) -I $(HEADER) -c $< -o $@
-
-$(LIBFT):
-	make -C libft && mv libft/libft.a .
+	$(CC) -c $< -o $@
 
 clean: 
 	rm -f $(FILES)
 
 fclean: clean
-	rm -f $(NAME) $(LIBFT)
+	rm -f $(NAME)
 
 re: clean all
