@@ -6,18 +6,19 @@
 /*   By: vide-sou <vide-sou@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 19:47:21 by vide-sou          #+#    #+#             */
-/*   Updated: 2024/10/17 20:54:30 by vide-sou         ###   ########.fr       */
+/*   Updated: 2024/10/18 18:32:35 by vide-sou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void ft_putchar(unsigned char c)
+int ft_putchar(unsigned char c)
 {
     write(1, &c, 1);
+    return (1);
 }
 
-void ft_putstr(unsigned char *str)
+int ft_putstr(unsigned char *str)
 {
     int index;
 
@@ -27,6 +28,7 @@ void ft_putstr(unsigned char *str)
         ft_putchar(str[index]);
         index++;
     }
+    return (index);
 }
 
 int ft_strlen(const char *str)
@@ -39,17 +41,14 @@ int ft_strlen(const char *str)
     return(index);
 }
 
-void ft_convert_base(long long nb, const char *base)
+int ft_convert_base(unsigned long long nb, const char *base)
 {
-    long long size;
+    unsigned long long   size;
+    int         index;
     
+    index = 0;
     size = ft_strlen(base);
-	if (nb < 0)
-    {
-        ft_putchar('-');
-        nb *= -1;
-    }
     if (nb > size - 1)
-		ft_convert_base(nb / size, base);
-	ft_putchar(base[nb % size]);
+		index += ft_convert_base(nb / size, base);
+	return index + ft_putchar(base[nb % size]);
 }

@@ -1,0 +1,4 @@
+printfTester
+*.o
+*.out
+*.a
