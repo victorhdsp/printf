@@ -1,32 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_utils.c                                  :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vide-sou <vide-sou@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/17 19:47:21 by vide-sou          #+#    #+#             */
-/*   Updated: 2024/10/19 03:13:59 by vide-sou         ###   ########.fr       */
+/*   Created: 2024/09/23 12:50:09 by vide-sou          #+#    #+#             */
+/*   Updated: 2024/10/09 16:20:43 by vide-sou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int ft_putchar(char c)
+void	*ft_memset(void *str, int c, size_t n)
 {
-    write(1, &c, 1);
-    return (1);
-}
+	size_t			index;
+	unsigned char	*s;
 
-int ft_putstr(char *str)
-{
-    int index;
-
-    index = 0;
-    while (str[index])
-    {
-        ft_putchar(str[index]);
-        index++;
-    }
-    return (index);
+	index = 0;
+	s = (unsigned char *)str;
+	while (index < n)
+	{
+		s[index] = (unsigned char)c;
+		index++;
+	}
+	return ((void *)s);
 }

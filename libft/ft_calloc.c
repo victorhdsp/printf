@@ -1,32 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_utils.c                                  :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vide-sou <vide-sou@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/17 19:47:21 by vide-sou          #+#    #+#             */
-/*   Updated: 2024/10/19 03:13:59 by vide-sou         ###   ########.fr       */
+/*   Created: 2024/09/25 12:15:47 by vide-sou          #+#    #+#             */
+/*   Updated: 2024/10/18 20:29:56 by vide-sou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int ft_putchar(char c)
+void	*ft_calloc(size_t nmemb, size_t size)
 {
-    write(1, &c, 1);
-    return (1);
-}
+	void	*result;
 
-int ft_putstr(char *str)
-{
-    int index;
-
-    index = 0;
-    while (str[index])
-    {
-        ft_putchar(str[index]);
-        index++;
-    }
-    return (index);
+	if (nmemb == 0 || nmemb == 0)
+		return (malloc(0));
+	if ((nmemb * size) % nmemb)
+		return (NULL);
+	result = malloc(nmemb * size);
+	if (!result)
+		return (NULL);
+	ft_memset(result, 0, nmemb * size);
+	return (result);
 }

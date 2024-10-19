@@ -1,32 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_utils.c                                  :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vide-sou <vide-sou@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/17 19:47:21 by vide-sou          #+#    #+#             */
-/*   Updated: 2024/10/19 03:13:59 by vide-sou         ###   ########.fr       */
+/*   Created: 2024/09/23 12:41:57 by vide-sou          #+#    #+#             */
+/*   Updated: 2024/10/14 15:26:52 by vide-sou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int ft_putchar(char c)
+size_t	ft_strlen(const char *s)
 {
-    write(1, &c, 1);
-    return (1);
-}
+	int	index;
 
-int ft_putstr(char *str)
-{
-    int index;
-
-    index = 0;
-    while (str[index])
-    {
-        ft_putchar(str[index]);
-        index++;
-    }
-    return (index);
+	index = 0;
+	while (s && s[index])
+		index++;
+	return (index);
 }

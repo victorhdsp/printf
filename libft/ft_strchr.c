@@ -1,32 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_utils.c                                  :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vide-sou <vide-sou@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/17 19:47:21 by vide-sou          #+#    #+#             */
-/*   Updated: 2024/10/19 03:13:59 by vide-sou         ###   ########.fr       */
+/*   Created: 2024/09/24 18:28:18 by vide-sou          #+#    #+#             */
+/*   Updated: 2024/10/13 14:41:45 by vide-sou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int ft_putchar(char c)
+char	*ft_strchr(const char *s, int c)
 {
-    write(1, &c, 1);
-    return (1);
-}
+	int	i;
+	int	len;
 
-int ft_putstr(char *str)
-{
-    int index;
-
-    index = 0;
-    while (str[index])
-    {
-        ft_putchar(str[index]);
-        index++;
-    }
-    return (index);
+	len = ft_strlen(s);
+	i = 0;
+	while (i <= len)
+	{
+		if (s[i] == (char)c)
+			return ((char *)(s + i));
+		i++;
+	}
+	if (!c)
+		return ((char *)s);
+	return (NULL);
 }

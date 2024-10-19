@@ -1,32 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_utils.c                                  :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vide-sou <vide-sou@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/17 19:47:21 by vide-sou          #+#    #+#             */
-/*   Updated: 2024/10/19 03:13:59 by vide-sou         ###   ########.fr       */
+/*   Created: 2024/09/23 12:50:09 by vide-sou          #+#    #+#             */
+/*   Updated: 2024/10/13 16:00:09 by vide-sou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int ft_putchar(char c)
+void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
-    write(1, &c, 1);
-    return (1);
-}
+	char	*cdest;
+	char	*csrc;
+	char	*fp;
+	size_t	index;
 
-int ft_putstr(char *str)
-{
-    int index;
-
-    index = 0;
-    while (str[index])
-    {
-        ft_putchar(str[index]);
-        index++;
-    }
-    return (index);
+	cdest = (char *)dest;
+	csrc = (char *)src;
+	fp = cdest;
+	index = 0;
+	if (!csrc && !cdest)
+		return (NULL);
+	while (index < n)
+	{
+		cdest[index] = csrc[index];
+		index++;
+	}
+	return (fp);
 }

@@ -1,4 +1,0 @@
-printfTester$
-*.o$
-*.out$
-*.a

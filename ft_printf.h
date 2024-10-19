@@ -3,22 +3,23 @@
 
 #include <unistd.h>
 #include <stdarg.h>
+#include "libft.h"
 
 #define U_HEX "0123456789ABCDEF"
 #define L_HEX "0123456789abcdef"
 #define DEC "0123456789"
 
-int ft_printf(const char *str, ...);
-int ft_command_p(void *point);
-int ft_putchar(unsigned char c);
-int ft_putstr(unsigned char *str);
-int ft_strlen(const char *str);
-int ft_convert_base(unsigned long long nb, const char *base);
-int ft_command_c(char c);
-int ft_command_s(char *str);
-int ft_command_d(long nb);
-int ft_command_u(unsigned int nb);
-int ft_command_x(unsigned int nb);
-int ft_command_X(unsigned int nb);
+int     ft_printf(const char *str, ...);
+int     ft_putchar(char c);
+int     ft_putstr(char *str);
+int	    ft_numlen(unsigned long long n);
+char    *ft_convert_base(unsigned long long nb, const char *base);
+char    *ft_command_p(void *point);
+char    *ft_command_c(char *flag, int c);
+char    *ft_command_s(char *flag, char *str);
+char    *ft_command_d(long nb);
+char    *ft_command_u(unsigned int nb, char *base);
+int     ft_traitment_null(char c, char *str, va_list args);
+char    *ft_width(char *flag, char *str);
 
 #endif

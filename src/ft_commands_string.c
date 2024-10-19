@@ -1,32 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_utils.c                                  :+:      :+:    :+:   */
+/*   ft_commands_string.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vide-sou <vide-sou@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/17 19:47:21 by vide-sou          #+#    #+#             */
-/*   Updated: 2024/10/19 03:13:59 by vide-sou         ###   ########.fr       */
+/*   Created: 2024/10/19 01:18:20 by vide-sou          #+#    #+#             */
+/*   Updated: 2024/10/19 07:24:45 by vide-sou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int ft_putchar(char c)
+char    *ft_command_c(char *flag, int c)
 {
-    write(1, &c, 1);
-    return (1);
+    char    *result;
+
+    result = ft_calloc(2, sizeof(char));
+    result[0] = c;
+    result = ft_width(flag, result);
+    return (result);
 }
 
-int ft_putstr(char *str)
+char    *ft_command_s(char *flag, char *str)
 {
-    int index;
+    char    *result;
 
-    index = 0;
-    while (str[index])
-    {
-        ft_putchar(str[index]);
-        index++;
-    }
-    return (index);
+    result = ft_strdup(str);
+    if ((int)*flag == '.')
+        while (ft_strchr(".0123456789", (int)*flag))
+            flag++;
+    result = ft_width(flag, result);
+    return (result);
 }

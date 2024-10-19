@@ -7,8 +7,8 @@ int main(void)
     void *point;
     int count;
     
-    count = ft_printf("este é um char: %p, %p", 0, 0);
+    count = ft_printf("%c ", '0' + 256);
     printf(", count: %d;\n", count);
-    count = printf("este é um char: %p, %p", (void *)0, (void *)0);
+    count = printf("%c ", '0' + 256);
     printf(", count: %d;\n", count);
 }
