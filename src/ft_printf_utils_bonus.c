@@ -6,7 +6,7 @@
 /*   By: vide-sou <vide-sou@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 19:47:21 by vide-sou          #+#    #+#             */
-/*   Updated: 2024/10/19 07:23:14 by vide-sou         ###   ########.fr       */
+/*   Updated: 2024/10/23 10:34:04 by vide-sou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ char *ft_width(char *flag, char *str)
     in_right = 0;
     while (ft_strchr("# -+", *flag))
     {
-        if ((int)*flag == '-')
+        if (*flag == '-')
             in_right = 1;
         flag++;
     }
@@ -33,9 +33,9 @@ char *ft_width(char *flag, char *str)
         width = (width * 10) + (*flag - '0');
         flag++;
     }
-    if (ft_strlen(str) >= width)
+    if (width <= ft_strlen(str))
         return (str);
-    result = ft_calloc(width, sizeof(char));
+    result = ft_calloc(width + 1, sizeof(char));
     ft_memset(result, ' ', width);
     if (!in_right)
         start = width - ft_strlen(str);
