@@ -1,32 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_utils.c                                  :+:      :+:    :+:   */
+/*   ft_toupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vide-sou <vide-sou@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/17 19:47:21 by vide-sou          #+#    #+#             */
-/*   Updated: 2024/10/19 03:13:59 by vide-sou         ###   ########.fr       */
+/*   Created: 2024/09/24 18:28:18 by vide-sou          #+#    #+#             */
+/*   Updated: 2024/09/30 19:50:46 by vide-sou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int	ft_putchar(char c)
+int	ft_toupper(int c)
 {
-	write(1, &c, 1);
-	return (1);
-}
-
-int	ft_putstr(char *str)
-{
-	int index;
-
-	index = 0;
-	while (str[index])
-	{
-		ft_putchar(str[index]);
-		index++;
-	}
-	return (index);
+	if (c >= 97 && c <= 122)
+		return (c - 32);
+	return (c);
 }
