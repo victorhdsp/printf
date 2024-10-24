@@ -1,37 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_commands_string.c                               :+:      :+:    :+:   */
+/*   ft_s.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vide-sou <vide-sou@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/19 01:18:20 by vide-sou          #+#    #+#             */
-/*   Updated: 2024/10/23 13:31:56 by vide-sou         ###   ########.fr       */
+/*   Created: 2024/10/23 15:28:56 by vide-sou          #+#    #+#             */
+/*   Updated: 2024/10/23 18:07:52 by vide-sou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-char	*ft_command_c(char *flag, int c)
+int ft_command_s_n(char *flag, char *str)
 {
-	char	*result;
-
-	if (!c)
-		return (NULL);
-	result = ft_calloc(2, sizeof(char));
-	result[0] = c;
-	result = ft_width(flag, result);
-	return (result);
-}
-
-char	*ft_command_s(char *flag, char *str)
-{
-	char *result;
-
+	t_flag_data *flag_data;
+    size_t      count;
+    char        *result;
+    
+    count = 0;
 	if (!str)
-		return (NULL);
+		return (ft_command_s_n(flag, "(null)"));
+    flag_data = ft_create_flag_data();
+    ft_get_flag_data(flag, flag_data);
 	result = ft_strdup(str);
-	result = ft_precision_string(flag, result);
-	result = ft_width(flag, result);
-	return (result);
+    result = ft_substr(flag_data, result);
+	result = ft_fill(flag_data, result);
+    count += ft_putstr(result);
+    free(result);
+    free(flag_data);
+	return (count);
 }

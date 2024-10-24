@@ -7,8 +7,8 @@ int main(void)
     void *point;
     int count;
     
-    count = ft_printf(" % d ", -1);
+    count = ft_printf(" %.13x ", 0);
     printf(", count: %d;\n", count);
-    count = printf(" % d ", -1);
+    count = printf(" %.13x ", 0);
     printf(", count: %d;\n", count);
 }
