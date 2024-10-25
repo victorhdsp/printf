@@ -20,7 +20,7 @@ int	ft_putchar(char c)
 
 int	ft_putstr(char *str)
 {
-	int index;
+	int	index;
 
 	index = 0;
 	while (str[index])

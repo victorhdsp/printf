@@ -6,7 +6,7 @@
 /*   By: vide-sou <vide-sou@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 19:47:21 by vide-sou          #+#    #+#             */
-/*   Updated: 2024/10/23 21:35:56 by vide-sou         ###   ########.fr       */
+/*   Updated: 2024/10/25 10:15:54 by vide-sou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ t_flag_data	*ft_create_flag_data(void)
 	flag_data->prefix = NULL;
 	return (flag_data);
 }
+
 static void	ft_firstflag(char *flag, t_flag_data *flag_data)
 {
 	if (*flag == '-')
@@ -41,6 +42,7 @@ static void	ft_firstflag(char *flag, t_flag_data *flag_data)
 	if (*flag == ' ')
 		flag_data->prefix = " ";
 }
+
 void	ft_get_flag_data(char *flag, t_flag_data *flag_data)
 {
 	while (ft_strchr("# -+0", *flag) && *flag)
@@ -84,10 +86,11 @@ char	*ft_fill(t_flag_data *flag_data, char *str)
 		free(str);
 	return (result);
 }
+
 char	*ft_substr(t_flag_data *flag_data, char *str)
 {
 	char	*result;
-	
+
 	if (!flag_data->has_precision)
 		return (str);
 	if (ft_strlen(str) <= flag_data->precision)
