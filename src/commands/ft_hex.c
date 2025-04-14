@@ -6,18 +6,32 @@
 /*   By: vide-sou <vide-sou@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 15:28:56 by vide-sou          #+#    #+#             */
-/*   Updated: 2024/10/25 10:20:14 by vide-sou         ###   ########.fr       */
+/*   Updated: 2025/04/14 08:27:56 by vide-sou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static void	ft_precision(t_flag_data *flag_data)
+static char	*ft_precision(t_flag_data *flag_data, char *str)
 {
+	char	*result;
+	size_t	start;
+
 	if (!flag_data->has_precision)
-		return ;
-	flag_data->width = flag_data->precision;
-	flag_data->set = '0';
+		return (NULL);
+	start = 0;
+	if ((!str) && flag_data->precision > 0)
+		flag_data->precision -= 1;
+	if (flag_data->precision <= 0 || flag_data->precision <= ft_strlen(str))
+		return (str);
+	result = ft_calloc(flag_data->precision + 1, sizeof(char *));
+	ft_memset(result, '0', flag_data->precision);
+	if (!flag_data->align)
+		start = flag_data->precision - ft_strlen(str);
+	ft_memcpy(result + start, str, ft_strlen(str));
+	if (str)
+		free(str);
+	return (result);
 }
 
 int	ft_command_hex_n(t_flag_data *flag_data, unsigned long nb, int upper)
@@ -29,13 +43,13 @@ int	ft_command_hex_n(t_flag_data *flag_data, unsigned long nb, int upper)
 
 	index = 0;
 	count = 0;
-	ft_precision(flag_data);
 	tmp = ft_convert_base(nb, HEX);
 	if (nb != 0)
 		result = ft_strjoin(flag_data->prefix, tmp);
 	else
 		result = ft_strjoin(NULL, tmp);
 	free(tmp);
+	result = ft_precision(flag_data, result);
 	result = ft_fill(flag_data, result);
 	while (upper && result && result[index])
 	{
